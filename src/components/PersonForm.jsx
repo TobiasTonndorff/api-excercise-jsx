@@ -1,4 +1,4 @@
-function PersonForm() {
+function PersonForm({addPerson}) {
     return ( <div>
         <h1>Add/Edit person</h1>
         <form>
@@ -18,7 +18,7 @@ function PersonForm() {
         <option value="other">Other</option>
     </select>
     <button>Update</button>
-    <button>Add</button>
+    <button onClick={() => addPerson()}>Add</button>
 
 </form>
     </div> );

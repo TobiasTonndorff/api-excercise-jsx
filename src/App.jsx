@@ -21,8 +21,14 @@ function App() {
     //fjern fra API - JSON-server
     fetchData(`${APIURL}/${personId}`, () =>{}, "DELETE");
     //fjern fra persons state
-    setPersons([...persons.filter(p => p.id != personId)]);
+    setPersons([...persons.filter((p) => p.id !== personId)]);
 
+
+  }
+
+  function addPerson(person){
+    fetchData(`${APIURL}/${person}`, () =>{}, "POST");
+    setPersons([...persons, person]);
   }
 
   useEffect(() => {
@@ -38,7 +44,7 @@ function App() {
     <div>
       <h1>Person DB</h1>
       <PersonList persons={persons} deletePersonById={deletePersonById}/>
-      <PersonForm />
+      <PersonForm addPerson={addPerson} />
 
 
     </div>
