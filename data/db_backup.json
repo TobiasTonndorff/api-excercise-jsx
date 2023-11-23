@@ -35,6 +35,24 @@
         "name": "Michael",
         "email": "michael@test.com",
         "gender": "male"
+      },
+      {
+        "id": 6,
+        "age": "32",
+        "name": "Lizzy",
+        "email": "lizzy@mail.dk"
+      },
+      {
+        "id": 7,
+        "age": "22",
+        "name": "Steve",
+        "email": "stevie@steve-o.org"
+      },
+      {
+        "id": 8,
+        "age": "19",
+        "name": "Michelle",
+        "email": "michelle-1234@somemail.com"
       }
     ]
   }
