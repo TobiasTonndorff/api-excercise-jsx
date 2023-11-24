@@ -5,6 +5,9 @@ import PersonList from './components/PersonList'
 import { fetchData } from './util/persistence'
 
 
+const blankPerson = {id: "", age: "", name: "", email: "", gender: ""};
+
+
 function App() {
 
   const [persons, setPersons] = useState([]);
@@ -26,10 +29,7 @@ function App() {
 
   }
 
-  function addPerson(person){
-    fetchData(`${APIURL}/${person}`, () =>{}, "POST");
-    setPersons([...persons, person]);
-  }
+  
 
   useEffect(() => {
     getPersons((data) => {
@@ -43,8 +43,9 @@ function App() {
   return (
     <div>
       <h1>Person DB</h1>
+      <PersonForm blankPerson={blankPerson}  />
       <PersonList persons={persons} deletePersonById={deletePersonById}/>
-      <PersonForm addPerson={addPerson} />
+      
 
 
     </div>
