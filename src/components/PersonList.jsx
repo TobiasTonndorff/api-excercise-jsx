@@ -1,4 +1,4 @@
-function PersonList({ persons, deletePersonById }) {
+function PersonList({ persons, deletePersonById, editPerson }) {
   return (
     <div>
       <h1>Person list</h1>
@@ -23,7 +23,7 @@ function PersonList({ persons, deletePersonById }) {
               <td>{person.email}</td>
               <td>{person.gender}</td>
               <td>
-                <button>Edit</button>
+                <button onClick={() => editPerson}>Edit</button>
                 <button onClick={() => deletePersonById(person.id)}>
                   Delete
                 </button>

@@ -41,7 +41,7 @@ function PersonForm({ blankPerson }) {
           <option value="other">Other</option>
         </select>
 
-        <button>Update</button>
+        <button >Update</button>
         <button onClick={() => setPerson(blankPerson)}>Reset</button>
       </form>
     </div>

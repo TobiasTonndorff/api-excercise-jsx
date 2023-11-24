@@ -11,7 +11,16 @@ const blankPerson = {id: "", age: "", name: "", email: "", gender: ""};
 function App() {
 
   const [persons, setPersons] = useState([]);
+  const [personToEdit, setPersonToEdit] = useState([blankPerson]);
   const APIURL = 'http://localhost:3000/api'
+
+  function editPerson(person) {
+
+    setPersonToEdit(person)
+
+
+
+  }
   
 
   function getPersons(callback) {
@@ -44,7 +53,11 @@ function App() {
     <div>
       <h1>Person DB</h1>
       <PersonForm blankPerson={blankPerson}  />
-      <PersonList persons={persons} deletePersonById={deletePersonById}/>
+      
+      
+      <PersonList persons={persons} 
+      deletePersonById={deletePersonById} 
+      editPerson={editPerson}/>
       
 
 
