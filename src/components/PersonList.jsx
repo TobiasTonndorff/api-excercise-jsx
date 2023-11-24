@@ -23,7 +23,7 @@ function PersonList({ persons, deletePersonById, editPerson }) {
               <td>{person.email}</td>
               <td>{person.gender}</td>
               <td>
-                <button onClick={() => editPerson}>Edit</button>
+                <button onClick={() => editPerson(person)}>Edit</button>
                 <button onClick={() => deletePersonById(person.id)}>
                   Delete
                 </button>

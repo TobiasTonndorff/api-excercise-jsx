@@ -1,12 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function PersonForm({ blankPerson }) {
-  const [person, setPerson] = useState({});
+function PersonForm({ blankPerson, personToEdit }) {
+  const [person, setPerson] = useState({...personToEdit});
+
+  useEffect(() => {
+    setPerson(personToEdit)
+  }, [personToEdit]);
+
+  function handleChange(event)
+  {
+    const value = event.target.value
+    const name = event.target.id
+    setPerson({...person, [name]: value})
+  }
+
+  function handleSubmit(event)
+  {
+    event.preventDefault();
+    alert("submit", person)
+    // kald callback funktion fra App.jsx som enten indsætter ny person (hvis id er tomt) eller opdaterer (hvis id != "")
+    
+
+  }
 
   return (
     <div>
       <h1>Add/Edit person</h1>
-      <form>
+      {JSON.stringify(person)}
+      <form onSubmit={handleSubmit}>
         <label htmlFor="id">Id</label>
         <input
           id="id"
@@ -16,7 +37,7 @@ function PersonForm({ blankPerson }) {
           value={person.id}
         />
         <label htmlFor="name">Name</label>
-        <input id="name" type="text" placeholder="name" value={person.name} />
+        <input id="name" type="text" placeholder="name" value={person.name} onChange={handleChange} />
         <label htmlFor="age">Age</label>
         <input
           id="age"
@@ -25,6 +46,7 @@ function PersonForm({ blankPerson }) {
           max="120"
           placeholder="age"
           value={person.age}
+          onChange={handleChange}
         />
         <label htmlFor="email">Email</label>
         <input
@@ -32,9 +54,10 @@ function PersonForm({ blankPerson }) {
           type="email"
           placeholder="email"
           value={person.email}
+          onChange={handleChange}
         />
         <label htmlFor="gender">Gender</label>
-        <select id="gender" value={person.gender}>
+        <select id="gender" value={person.gender} onChange={handleChange}>
           <option defaultChecked>Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>

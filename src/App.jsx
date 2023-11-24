@@ -17,9 +17,7 @@ function App() {
   function editPerson(person) {
 
     setPersonToEdit(person)
-
-
-
+    
   }
   
 
@@ -52,7 +50,7 @@ function App() {
   return (
     <div>
       <h1>Person DB</h1>
-      <PersonForm blankPerson={blankPerson}  />
+      <PersonForm blankPerson={blankPerson} personToEdit={personToEdit}  />
       
       
       <PersonList persons={persons} 
