@@ -19,6 +19,34 @@ function App() {
     setPersonToEdit(person)
     
   }
+
+  function mutatePerson(person) {
+    if (person.id != "")
+    {
+      //put
+      updatePerson(person);
+    } else {
+      //post
+      createPerson(person);
+    }
+  }
+
+  function updatePerson(person)
+  {
+    //opdater i API - JSON-server
+    fetchData(`${APIURL}/${person.id}`, () =>{}, "PUT", person);
+    //opdater i persons state
+    setPersons([...persons.filter((p) => p.id !== person.id), person]);
+  }
+
+  function createPerson(person)
+  {
+    //opret i API - JSON-server
+    fetchData(`${APIURL}`, () =>{}, "POST", person);
+    //opret i persons state
+    setPersons([...persons, person]);
+  }
+  
   
 
   function getPersons(callback) {
@@ -50,7 +78,7 @@ function App() {
   return (
     <div>
       <h1>Person DB</h1>
-      <PersonForm blankPerson={blankPerson} personToEdit={personToEdit}  />
+      <PersonForm blankPerson={blankPerson} personToEdit={personToEdit} mutatePerson={mutatePerson}  />
       
       
       <PersonList persons={persons} 

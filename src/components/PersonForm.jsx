@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function PersonForm({ blankPerson, personToEdit }) {
+function PersonForm({ blankPerson, personToEdit, mutatePerson }) {
   const [person, setPerson] = useState({...personToEdit});
 
   useEffect(() => {
@@ -17,10 +17,7 @@ function PersonForm({ blankPerson, personToEdit }) {
   function handleSubmit(event)
   {
     event.preventDefault();
-    alert("submit", person)
-    // kald callback funktion fra App.jsx som enten indsætter ny person (hvis id er tomt) eller opdaterer (hvis id != "")
-    
-
+    mutatePerson(person);
   }
 
   return (
