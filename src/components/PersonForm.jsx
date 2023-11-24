@@ -17,6 +17,7 @@ function PersonForm({ blankPerson, personToEdit, mutatePerson }) {
   function handleSubmit(event)
   {
     event.preventDefault();
+    console.log("submit", person);
     mutatePerson(person);
   }
 

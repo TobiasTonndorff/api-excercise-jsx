@@ -2,7 +2,7 @@
   "api": [
     {
       "id": 1,
-      "age": "22",
+      "age": "40",
       "name": "Steve",
       "email": "steve@test.com",
       "gender": "male"
@@ -34,6 +34,13 @@
       "name": "Michael",
       "email": "michael@test.com",
       "gender": "male"
+    },
+    {
+      "id": 7,
+      "age": "12",
+      "name": "tobias",
+      "email": "tobias@tonndorff.dk",
+      "gender": "female"
     }
   ]
 }

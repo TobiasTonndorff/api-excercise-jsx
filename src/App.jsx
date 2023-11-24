@@ -33,18 +33,24 @@ function App() {
 
   function updatePerson(person)
   {
-    //opdater i API - JSON-server
-    fetchData(`${APIURL}/${person.id}`, () =>{}, "PUT", person);
-    //opdater i persons state
-    setPersons([...persons.filter((p) => p.id !== person.id), person]);
+    console.log("updatePerson");
+    fetchData(`${APIURL}/${person.id}`,
+    person => {
+     setPersons(
+      persons.map((p => p.id === person.id ? {...person} : p))
+     );
+  },
+      'PUT',
+       person
+    );
   }
 
   function createPerson(person)
   {
-    //opret i API - JSON-server
-    fetchData(`${APIURL}`, () =>{}, "POST", person);
-    //opret i persons state
-    setPersons([...persons, person]);
+    fetchData(`${APIURL}`,
+     (person) => setPersons([...persons, person]), 
+     "POST",
+      person);
   }
   
   
